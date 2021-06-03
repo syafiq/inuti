@@ -11,12 +11,12 @@ uint32_t mesh_timer = 0;
 
 int main(int argc, char** argv) {
   uint8_t nodeID = 33;
-  gw.begin(nodeID);
+  gw.begin(nodeID); // Start the node using RF24Mesh, with nodeID 33 (Slave)
   char ip[] = "10.1.3.33";
   char subnet[] = "255.255.0.0";
   gw.setIP(ip,subnet);
   uint32_t failCounter = 0;
-  
+  // The rest of the commentary is the same with BaseStation.cpp
  while(1){
     gw.update();
     if( network.available() ){
