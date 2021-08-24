@@ -12,6 +12,10 @@ uint32_t mesh_timer = 0;
 int main(int argc, char** argv) {
   uint8_t nodeID = 33;
   gw.begin(nodeID); // Start the node using RF24Mesh, with nodeID 33 (Slave)
+  radio.setAutoAck(false);
+  radio.disableCRC();
+  radio.setDataRate(RF24_2MBPS);
+  radio.printDetails();
   char ip[] = "10.1.3.33";
   char subnet[] = "255.255.0.0";
   gw.setIP(ip,subnet);
