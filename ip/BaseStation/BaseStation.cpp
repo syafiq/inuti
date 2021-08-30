@@ -16,7 +16,7 @@ int main(int argc, char** argv) {
   gw.begin(nodeID); // Start the gateway using RF24Mesh, with nodeID 0 (Master)
   radio.setAutoAck(false);
   radio.disableCRC();
-  
+  radio.setDataRate(RF24_2MBPS);
   char ip[] = "10.1.3.1";
   char subnet[] = "255.255.0.0";
   gw.setIP(ip,subnet); // configure the IP and subnet mask
