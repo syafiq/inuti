@@ -56,3 +56,31 @@ UDP buffer size:  176 KByte (default)
 
 ### For Fun
 With the current set up, it is possible to stream 144p video over HTTP, but I had to be extremely patient. Setting up a streaming server over UDP **might** be feasible though. 
+
+### Optimization
+#### Disabling CRC
+##### TCP
+```
+pi@pi2:~ $ iperf -c 10.1.3.1
+------------------------------------------------------------
+Client connecting to 10.1.3.1, TCP port 5001
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.1.3.33 port 48332 connected with 10.1.3.1 port 5001
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-10.1 sec  63.6 KBytes  51.6 Kbits/sec
+```
+##### UDP
+```
+pi@pi2:~ $ iperf -c 10.1.3.1 -u
+------------------------------------------------------------
+Client connecting to 10.1.3.1, UDP port 5001
+Sending 1470 byte datagrams, IPG target: 11215.21 us (kalman adjust)
+UDP buffer size:  176 KByte (default)
+------------------------------------------------------------
+[  3] local 10.1.3.33 port 32974 connected with 10.1.3.1 port 5001
+[  3] WARNING: did not receive ack of last datagram after 10 tries.
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-10.0 sec  1.25 MBytes  1.05 Mbits/sec
+[  3] Sent 2 datagrams
+```
