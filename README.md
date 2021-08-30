@@ -54,9 +54,6 @@ UDP buffer size:  176 KByte (default)
 [  3] Sent 2 datagrams
 ```
 
-### For Fun
-With the current set up, it is possible to stream 144p video over HTTP, but I had to be extremely patient. Setting up a streaming server over UDP **might** be feasible though. 
-
 ### Optimization
 #### Disabling CRC and AutoAck
 Apparently, the [requirement](https://nrf24.github.io/RF24/classRF24.html#a5eacd9ecfbc19864801d714c292cf8be) to disable CRC in the driver is to disable the AutoAck in the first place. 
